@@ -1,0 +1,340 @@
+Created by PLY version 3.10 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    float
+    string
+    train
+    test
+
+Grammar
+
+Rule 0     S' -> start
+Rule 1     start -> LoadFile Split Use AddL Compile Fit Evaluate
+Rule 2     LoadFile -> load filepath
+Rule 3     Split -> split splitinfo
+Rule 4     splitinfo -> input index
+Rule 5     splitinfo -> output index
+Rule 6     Use -> use TON
+Rule 7     TON -> sequential
+Rule 8     AddL -> add_layer int Act
+Rule 9     Act -> relu
+Rule 10    Act -> sigmoid
+Rule 11    Compile -> compile Optimizer
+Rule 12    Optimizer -> adam
+Rule 13    Fit -> fit epoch BatchSize
+Rule 14    epoch -> int
+Rule 15    BatchSize -> int
+Rule 16    Evaluate -> evaluate
+
+Terminals, with rules where they appear
+
+adam                 : 12
+add_layer            : 8
+compile              : 11
+error                : 
+evaluate             : 16
+filepath             : 2
+fit                  : 13
+float                : 
+index                : 4 5
+input                : 4
+int                  : 8 14 15
+load                 : 2
+output               : 5
+relu                 : 9
+sequential           : 7
+sigmoid              : 10
+split                : 3
+string               : 
+test                 : 
+train                : 
+use                  : 6
+
+Nonterminals, with rules where they appear
+
+Act                  : 8
+AddL                 : 1
+BatchSize            : 13
+Compile              : 1
+Evaluate             : 1
+Fit                  : 1
+LoadFile             : 1
+Optimizer            : 11
+Split                : 1
+TON                  : 6
+Use                  : 1
+epoch                : 13
+splitinfo            : 3
+start                : 0
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . start
+    (1) start -> . LoadFile Split Use AddL Compile Fit Evaluate
+    (2) LoadFile -> . load filepath
+
+    load            shift and go to state 3
+
+    start                          shift and go to state 1
+    LoadFile                       shift and go to state 2
+
+state 1
+
+    (0) S' -> start .
+
+
+
+state 2
+
+    (1) start -> LoadFile . Split Use AddL Compile Fit Evaluate
+    (3) Split -> . split splitinfo
+
+    split           shift and go to state 5
+
+    Split                          shift and go to state 4
+
+state 3
+
+    (2) LoadFile -> load . filepath
+
+    filepath        shift and go to state 6
+
+
+state 4
+
+    (1) start -> LoadFile Split . Use AddL Compile Fit Evaluate
+    (6) Use -> . use TON
+
+    use             shift and go to state 8
+
+    Use                            shift and go to state 7
+
+state 5
+
+    (3) Split -> split . splitinfo
+    (4) splitinfo -> . input index
+    (5) splitinfo -> . output index
+
+    input           shift and go to state 10
+    output          shift and go to state 11
+
+    splitinfo                      shift and go to state 9
+
+state 6
+
+    (2) LoadFile -> load filepath .
+
+    split           reduce using rule 2 (LoadFile -> load filepath .)
+
+
+state 7
+
+    (1) start -> LoadFile Split Use . AddL Compile Fit Evaluate
+    (8) AddL -> . add_layer int Act
+
+    add_layer       shift and go to state 13
+
+    AddL                           shift and go to state 12
+
+state 8
+
+    (6) Use -> use . TON
+    (7) TON -> . sequential
+
+    sequential      shift and go to state 15
+
+    TON                            shift and go to state 14
+
+state 9
+
+    (3) Split -> split splitinfo .
+
+    use             reduce using rule 3 (Split -> split splitinfo .)
+
+
+state 10
+
+    (4) splitinfo -> input . index
+
+    index           shift and go to state 16
+
+
+state 11
+
+    (5) splitinfo -> output . index
+
+    index           shift and go to state 17
+
+
+state 12
+
+    (1) start -> LoadFile Split Use AddL . Compile Fit Evaluate
+    (11) Compile -> . compile Optimizer
+
+    compile         shift and go to state 19
+
+    Compile                        shift and go to state 18
+
+state 13
+
+    (8) AddL -> add_layer . int Act
+
+    int             shift and go to state 20
+
+
+state 14
+
+    (6) Use -> use TON .
+
+    add_layer       reduce using rule 6 (Use -> use TON .)
+
+
+state 15
+
+    (7) TON -> sequential .
+
+    add_layer       reduce using rule 7 (TON -> sequential .)
+
+
+state 16
+
+    (4) splitinfo -> input index .
+
+    use             reduce using rule 4 (splitinfo -> input index .)
+
+
+state 17
+
+    (5) splitinfo -> output index .
+
+    use             reduce using rule 5 (splitinfo -> output index .)
+
+
+state 18
+
+    (1) start -> LoadFile Split Use AddL Compile . Fit Evaluate
+    (13) Fit -> . fit epoch BatchSize
+
+    fit             shift and go to state 22
+
+    Fit                            shift and go to state 21
+
+state 19
+
+    (11) Compile -> compile . Optimizer
+    (12) Optimizer -> . adam
+
+    adam            shift and go to state 24
+
+    Optimizer                      shift and go to state 23
+
+state 20
+
+    (8) AddL -> add_layer int . Act
+    (9) Act -> . relu
+    (10) Act -> . sigmoid
+
+    relu            shift and go to state 26
+    sigmoid         shift and go to state 27
+
+    Act                            shift and go to state 25
+
+state 21
+
+    (1) start -> LoadFile Split Use AddL Compile Fit . Evaluate
+    (16) Evaluate -> . evaluate
+
+    evaluate        shift and go to state 29
+
+    Evaluate                       shift and go to state 28
+
+state 22
+
+    (13) Fit -> fit . epoch BatchSize
+    (14) epoch -> . int
+
+    int             shift and go to state 31
+
+    epoch                          shift and go to state 30
+
+state 23
+
+    (11) Compile -> compile Optimizer .
+
+    fit             reduce using rule 11 (Compile -> compile Optimizer .)
+
+
+state 24
+
+    (12) Optimizer -> adam .
+
+    fit             reduce using rule 12 (Optimizer -> adam .)
+
+
+state 25
+
+    (8) AddL -> add_layer int Act .
+
+    compile         reduce using rule 8 (AddL -> add_layer int Act .)
+
+
+state 26
+
+    (9) Act -> relu .
+
+    compile         reduce using rule 9 (Act -> relu .)
+
+
+state 27
+
+    (10) Act -> sigmoid .
+
+    compile         reduce using rule 10 (Act -> sigmoid .)
+
+
+state 28
+
+    (1) start -> LoadFile Split Use AddL Compile Fit Evaluate .
+
+    $end            reduce using rule 1 (start -> LoadFile Split Use AddL Compile Fit Evaluate .)
+
+
+state 29
+
+    (16) Evaluate -> evaluate .
+
+    $end            reduce using rule 16 (Evaluate -> evaluate .)
+
+
+state 30
+
+    (13) Fit -> fit epoch . BatchSize
+    (15) BatchSize -> . int
+
+    int             shift and go to state 33
+
+    BatchSize                      shift and go to state 32
+
+state 31
+
+    (14) epoch -> int .
+
+    int             reduce using rule 14 (epoch -> int .)
+
+
+state 32
+
+    (13) Fit -> fit epoch BatchSize .
+
+    evaluate        reduce using rule 13 (Fit -> fit epoch BatchSize .)
+
+
+state 33
+
+    (15) BatchSize -> int .
+
+    evaluate        reduce using rule 15 (BatchSize -> int .)
+
